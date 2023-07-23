@@ -18,12 +18,12 @@ public class HotelController {
         this.hotelService = hotelService;
     }
 
-    @PostMapping
+    @PostMapping()
     public ResponseEntity<HotelDTO> createHotel(@RequestBody HotelDTO hotelDTO) {
         return new ResponseEntity<>(hotelService.createHotel(hotelDTO), HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping()
     public  ResponseEntity<List<HotelDTO>> getAllHotel(){
         return new ResponseEntity<>(hotelService.getAllHotel(), HttpStatus.OK);
     }
