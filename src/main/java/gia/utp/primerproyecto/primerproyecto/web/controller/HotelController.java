@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("v1/hotel")
+@RequestMapping("v1/hotels")
 public class HotelController {
 
     private final HotelService hotelService;
@@ -29,18 +29,18 @@ public class HotelController {
     }
 
     @GetMapping("/{id}")
-    public  ResponseEntity<HotelDTO> getHotel(@PathVariable Integer id){
+    public  ResponseEntity<HotelDTO> getHotel(@PathVariable Long id){
         return new ResponseEntity<>(hotelService.getHotel(id), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<HotelDTO> updateHotel(@PathVariable Integer id, @RequestBody HotelDTO hotelDTO){
+    public ResponseEntity<HotelDTO> updateHotel(@PathVariable Long id, @RequestBody HotelDTO hotelDTO){
         HotelDTO updatedHotel = hotelService.updateHotel(id, hotelDTO);
         return new ResponseEntity<>(updatedHotel, HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/{id}")
-    public  ResponseEntity<DeleteResponse> deleteHotel(@PathVariable Integer id){
+    public  ResponseEntity<DeleteResponse> deleteHotel(@PathVariable Long id){
         DeleteResponse deleteResponse = hotelService.deleteHotel(id);
         return new ResponseEntity<>(deleteResponse,HttpStatus.ACCEPTED);
     }
