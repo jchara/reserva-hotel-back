@@ -13,16 +13,16 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "users", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
+@Table(name = "users")
 public class UserEntity {
     @EmbeddedId
     private UserPK id;
     private String name;
     private String phoneNumber;
+    @Column(unique = true)
     private String email;
     private String password;
 
-    @ManyToOne
-    @JoinColumn(insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     private RolEntity rol;
 }

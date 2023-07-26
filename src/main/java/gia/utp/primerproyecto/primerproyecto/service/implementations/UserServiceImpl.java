@@ -28,6 +28,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO createUser(UserDTO userDTO) {
+        userDTO.setRolId(2L);
         UserEntity getUser = userRepository.findById(userDTO.getId()).orElse(null);
         UserEntity userEmail = userRepository.findByEmail(userDTO.getEmail());
 
@@ -68,12 +69,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO updateUser(UserPK id, UserDTO userDTO) {
+        userDTO.setRolId(2L);
         UserEntity getUser = userRepository.findById(userDTO.getId()).orElse(null);
-        UserEntity userEmail = userRepository.findByEmail(userDTO.getEmail());
-
-        if (userEmail != null) {
-            throw new BadRequestException("El usuario con email " + userDTO.getEmail() +  " ya existe");
-        }
 
         if(getUser != null){
             UserEntity userEntity = modelMapper.map(userDTO, UserEntity.class);

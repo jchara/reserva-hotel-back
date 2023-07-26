@@ -6,15 +6,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "hotel")
+@Table(name = "hotels")
 public class HotelEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,4 +24,7 @@ public class HotelEntity {
     private String email;
     private Integer totalRooms;
     private Integer reserveCapacity;
+
+   @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
+    private List<RoomEntity> rooms;
 }

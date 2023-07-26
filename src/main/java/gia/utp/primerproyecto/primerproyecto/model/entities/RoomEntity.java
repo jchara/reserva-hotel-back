@@ -6,21 +6,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "roles")
-public class RolEntity {
-
+@Table (name = "rooms", uniqueConstraints = @UniqueConstraint(columnNames = "roomNumber"))
+public class RoomEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String description;
+    @Column(unique = true)
+    private Long roomNumber;
+    private Long price;
+    private String roomType;
+    private Long bedsNumber;
 
-    @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL)
-    private List<UserEntity> users;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private HotelEntity hotel;
 }
