@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin({"*"})
 @RestController
 @RequestMapping("v1/rooms")
 public class RoomController {
