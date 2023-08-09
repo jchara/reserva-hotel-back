@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 public class HotelDTO {
-    private Integer id;
+    private Long id;
     private String name;
     private String phoneNumber;
     private String address;

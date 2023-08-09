@@ -25,4 +25,7 @@ public class RoomEntity {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private HotelEntity hotel;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private ReservationEntity reservation;
 }
